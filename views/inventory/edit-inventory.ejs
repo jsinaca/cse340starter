@@ -19,11 +19,11 @@
     <% } %>
     
 <!-- Inventory items display -->
-<div id="add-inventory">
-    <form action="/inv/add-vehicle" method="post">
+<div id="modify-inventory">
+    <form id="updateForm" action="/inv/update" method="post">
         <p>ALL FIELDS ARE REQUIRED</p>
 
-        <p id="classificasion_id">Classification</p>
+        <p id="classificasion">Classification</p>
         <%- classificationList %>
 
         <label for="inv_make">Make</label>
@@ -54,7 +54,13 @@
         <input type="text" name="inv_color" id="inv_color" placeholder="" required value="<%= locals.inv_color %>">
         <!-- "^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{12,}$" -->
 
-        <button type="submit">Add Vehicle</button>
+        <button type="submit" disabled>Modify Vehicle</button>
+        
+        <input type="hidden" name="inv_id"
+        <% if(locals.inv_id) {%> value="<%= locals.inv_id %>"
+        <% } %>>
         
     </form>
 </div>
+
+<script src="../../js/edit-update.js"></script>
