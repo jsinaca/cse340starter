@@ -20,5 +20,16 @@ router.post("/login", regValidate.loginRules(), regValidate.checkLoginData, util
 // Route to account view once login
 router.get("/", utilities.checkLogin, utilities.handleErrors(accountController.accountManagment));
 
+// Route to account information view
+router.get("/update/:account_id", utilities.checkLogin, utilities.handleErrors(accountController.accountInfomation));
+
+// Route to update account information 
+router.post("/update/", utilities.checkLogin, regValidate.changeInformationRules(), regValidate.checkUpdateData, utilities.handleErrors(accountController.updateAccountInfomation));
+
+// Route to update account password 
+router.post("/changepassword/", utilities.checkLogin, regValidate.changePasswordRules(), regValidate.checkPassowordData , utilities.handleErrors(accountController.updateAccountPassword));
+
+// Route to update account password 
+router.post("/changepassword/", utilities.checkLogin, regValidate.changePasswordRules(), regValidate.checkPassowordData , utilities.handleErrors(accountController.updateAccountPassword));
 
 module.exports = router;
